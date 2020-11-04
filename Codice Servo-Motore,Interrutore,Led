@@ -1,0 +1,27 @@
+#include <Servo.h>
+
+#define pinServo 3
+#define pinButt1 4
+#define pinLed1  5
+#define pinLed2  6
+
+Servo myservo;
+void setup(){
+ myservo.attach(pinServo);
+  
+ pinMode(pinButt1,INPUT );
+ pinMode(pinLed1, OUTPUT);
+ pinMode(pinLed2, OUTPUT);	
+
+}
+
+void loop(){
+digitalWrite(pinLed2,HIGH);
+if(digitalRead(pinButt1) == 0 ) myservo.write(0);
+if(digitalRead(pinButt1) == 1 ) myservo.write(90);
+ digitalWrite(pinLed1, digitalRead(pinButt1));
+if(digitalRead(pinButt1) == 1 ) digitalWrite(pinLed2,LOW); 
+  
+ delay(15);
+
+}
